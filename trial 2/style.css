@@ -32,20 +32,17 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: -1;
-<<<<<<< HEAD
     background: radial-gradient(800px circle at var(--x, 50%) var(--y, 50%), 
         rgba(28, 5, 196, 0.192) 0%, 
         rgba(5, 12, 139, 0.1) 25%, 
         rgba(3, 16, 80, 0.05) 50%, 
         transparent 100%);
-=======
     background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), 
         rgba(108, 92, 231, 0.15) 0%, 
         rgba(253, 121, 168, 0.1) 25%, 
         rgba(0, 184, 148, 0.05) 50%, 
         transparent 100%);
     transition: background 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
->>>>>>> 8bce4b2e5865c4380424dc0c6e8d18894c7fb357
 }
 
 /* Navigation */
@@ -539,7 +536,6 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
 }
-<<<<<<< HEAD
 /* Hero title hover transition */
 .hero-title {
     transition: color 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -563,5 +559,3 @@ html {
     pointer-events: none;
     white-space: nowrap;
 }
-=======
->>>>>>> 8bce4b2e5865c4380424dc0c6e8d18894c7fb357

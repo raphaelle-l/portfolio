@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Mouse movement gradient effect with smooth delay
 let mouseX = 50;
 let mouseY = 50;
@@ -20,37 +19,16 @@ function updateGradient() {
     
     // Continue animation
     requestAnimationFrame(updateGradient);
-=======
-// Mouse movement gradient effect with throttling
-let mouseX = 50;
-let mouseY = 50;
-let animationId = null;
-
-function updateGradient() {
-    const gradient = document.querySelector('.bg-gradient');
-    gradient.style.setProperty('--x', mouseX + '%');
-    gradient.style.setProperty('--y', mouseY + '%');
-    animationId = null;
->>>>>>> 8bce4b2e5865c4380424dc0c6e8d18894c7fb357
 }
 
 document.addEventListener('mousemove', (e) => {
     mouseX = (e.clientX / window.innerWidth) * 100;
     mouseY = (e.clientY / window.innerHeight) * 100;
-<<<<<<< HEAD
 });
 
 // Start the animation loop
 updateGradient();
 
-=======
-    
-    if (animationId === null) {
-        animationId = requestAnimationFrame(updateGradient);
-    }
-});
-
->>>>>>> 8bce4b2e5865c4380424dc0c6e8d18894c7fb357
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -64,7 +42,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-<<<<<<< HEAD
 // Hero title language toggle with consistent dimensions
 const heroTitle = document.getElementById('hero-title');
 const englishText = "Hello, my name is Raphaelle.";
@@ -98,8 +75,6 @@ heroTitle.addEventListener('mouseenter', function() {
 heroTitle.addEventListener('mouseleave', function() {
     this.textContent = englishText;
 });
-=======
->>>>>>> 8bce4b2e5865c4380424dc0c6e8d18894c7fb357
 
 // Form submission
 document.querySelector('.contact-form').addEventListener('submit', function(e) {
@@ -125,8 +100,4 @@ function updateTime() {
 
 // Update time every second
 setInterval(updateTime, 1000);
-<<<<<<< HEAD
 updateTime(); // Initial call
-=======
-updateTime(); // Initial call
->>>>>>> 8bce4b2e5865c4380424dc0c6e8d18894c7fb357

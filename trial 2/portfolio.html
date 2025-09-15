@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Creative Portfolio</title>
-    <link rel="stylesheet" href="pagestyle.css">
+    <title>Raphaelle Lepere - Creative Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Background gradient -->
@@ -18,8 +18,11 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <a href="https://www.linkedin.com/in/raphaelle-lepere-088285312" target="_blank">LinkedIn</a>
             </ul>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Instagram</a>
+            </div>
         </div>
     </nav>
 
@@ -34,7 +37,7 @@
                     <div class="hero-right">
                         <div class="hero-status">
                             <span class="status-indicator"></span>
-                            Status <span class="arrow">→</span> Stressed Out Senior
+                            Status <span class="arrow">→</span> Open to Opportunities
                         </div>
                     </div>
                 </div>
@@ -48,7 +51,10 @@
                         <span>Currently</span> <span class="arrow">→</span> <span>Creative Technology & Design Student @ CU Boulder</span>
                     </div>
                     <div class="hero-info-item">
-                        <span>Exploring</span> <span class="arrow">→</span> <span>Digital Art, Physical Fabrication & Interactive Design</span>
+                        <span>Previously</span> <span class="arrow">→</span> <span>Freelance Design Projects • Art Collaborations</span>
+                    </div>
+                    <div class="hero-info-item">
+                        <span>Delivering</span> <span class="arrow">→</span> <span>Thoughtful Design Solutions ◉</span>
                     </div>
                 </div>
             </div>
@@ -110,86 +116,57 @@
         </div>
     </section>
 
-   <!-- Work Section -->
-<section id="work" class="section">
-    <div class="container">
-        <div class="work-intro">
-            <h2 class="work-title">My Work</h2>
-            <p class="work-subtitle">Organized by year — click on a folder to explore projects</p>
-        </div>
-        
-        <div class="folders-grid">
-            <div class="folder-item" data-year="2025">
-                <div class="folder-cover">
-                    <div class="folder-tab">2025</div>
-                    <div class="folder-preview">
-                        <div class="preview-item">Design System</div>
-                        <div class="preview-item">Art Installation</div>
-                        <div class="preview-item">Product Design</div>
-                        <div class="preview-item">Digital Art</div>
+    <!-- Projects Section -->
+    <section id="work" class="section">
+        <div class="container">
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-image">KINETIC SCULPTURE</div>
+                    <div class="project-content">
+                        <h3>Responsive Art Installation</h3>
+                        <p>An interactive kinetic sculpture that responds to ambient sound and movement, created through custom fabrication techniques and sensor integration. The piece explores the relationship between technology and organic movement, creating a dialogue between viewer and artwork.</p>
+                        <div class="project-tags">
+                            <span class="tag">Physical Computing</span>
+                            <span class="tag">Fabrication</span>
+                            <span class="tag">Installation Art</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="folder-item" data-year="2024">
-                <div class="folder-cover">
-                    <div class="folder-tab">2024</div>
-                    <div class="folder-preview">
-                        <div class="preview-item">Design System</div>
-                        <div class="preview-item">Art Installation</div>
-                        <div class="preview-item">Product Design</div>
-                        <div class="preview-item">Digital Art</div>
+                
+                <div class="project-item">
+                    <div class="project-image">MODULAR LIGHTING</div>
+                    <div class="project-content">
+                        <h3>Sustainable Lighting System</h3>
+                        <p>A series of modular lighting fixtures that combine sustainable materials with customizable configurations. Each piece can be reconfigured to suit different spaces and moods, emphasizing adaptability and longevity in design.</p>
+                        <div class="project-tags">
+                            <span class="tag">Product Design</span>
+                            <span class="tag">Sustainability</span>
+                            <span class="tag">3D Modeling</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="folder-item" data-year="2023">
-                <div class="folder-cover">
-                    <div class="folder-tab">2023</div>
-                    <div class="folder-preview">
-                        <div class="preview-item">Branding Project</div>
-                        <div class="preview-item">Web Design</div>
-                        <div class="preview-item">Sculpture</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="folder-item" data-year="2022">
-                <div class="folder-cover">
-                    <div class="folder-tab">2022</div>
-                    <div class="folder-preview">
-                        <div class="preview-item">Early Work A</div>
-                        <div class="preview-item">Early Work B</div>
+                
+                <div class="project-item">
+                    <div class="project-image">VISUAL IDENTITY</div>
+                    <div class="project-content">
+                        <h3>Brand Identity & Illustration</h3>
+                        <p>Complete visual identity system for a local creative collective, featuring hand-drawn illustrations and custom typography. The project reflects their community-focused values while maintaining professional versatility across digital and print applications.</p>
+                        <div class="project-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Illustration</span>
+                            <span class="tag">Typography</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Full-screen folder view -->
-    <div class="folder-fullscreen" id="folder-fullscreen">
-        <div class="folder-fullscreen-content">
-            <div class="folder-header">
-                <button class="back-button">← Back to Work</button>
-                <h2 class="folder-year-title">2025 Work</h2>
-            </div>
-            <div class="projects-inside-folder">
-                <div class="project-card">
-                    <div class="project-image-placeholder">PROJECT IMAGE</div>
-                    <h3>Project Title</h3>
-                    <p>Project description goes here...</p>
-                </div>
-                <!-- More project cards will be added here dynamically -->
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="contact-title">Wanna talk?</h2>
-            <p class="contact-description">Leave a message here for any questions or comments!</p>
+            <h2 class="contact-title">Let's create something meaningful together</h2>
+            <p class="contact-description">Whether it's a product design challenge, a creative collaboration, or an experimental project, I'd love to explore how we can bring your vision to life.</p>
             
             <form class="contact-form">
                 <div class="form-row">
@@ -203,11 +180,11 @@
                     </div>
                 </div>
                 <div class="form-group full-width">
-                    <label for="project">Subject</label>
-                    <input type="text" id="project" name="project" placeholder="Question, Collaboration, Commission...">
+                    <label for="project">Project Type</label>
+                    <input type="text" id="project" name="project" placeholder="Product Design, Collaboration, Commission...">
                 </div>
                 <div class="form-group full-width">
-                    <label for="message">Details</label>
+                    <label for="message">Tell me about your vision</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="btn-submit">SEND MESSAGE</button>
@@ -218,10 +195,10 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Raphaelle. Creative Technology & Design Student at CU Boulder.</p>
+            <p>&copy; 2024 Your Name. Creative Technology & Design Student at CU Boulder.</p>
         </div>
     </footer>
 
-    <script src="pagescript2.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
