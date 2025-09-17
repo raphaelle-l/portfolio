@@ -1,7 +1,7 @@
 // Mouse movement gradient effect with smooth delay
-let mouseX = 50;
+let mouseX = 60; // Starting slightly to the right instead of 50
 let mouseY = 50;
-let currentX = 50;
+let currentX = 60; // Starting slightly to the right instead of 50
 let currentY = 50;
 
 function lerp(start, end, factor) {
@@ -9,21 +9,28 @@ function lerp(start, end, factor) {
 }
 
 function updateGradient() {
-    // Smoothly interpolate towards target position
-    currentX = lerp(currentX, mouseX, 0.005); // 0.05 = delay factor (lower = more delay)
-    currentY = lerp(currentY, mouseY, 0.005);
+    // Smoothly interpolate towards target position with faster response
+    currentX = lerp(currentX, mouseX, 0.08); // Increased from 0.005 to 0.08 for more responsive movement
+    currentY = lerp(currentY, mouseY, 0.08);
     
     const gradient = document.querySelector('.bg-gradient');
-    gradient.style.setProperty('--x', currentX + '%');
-    gradient.style.setProperty('--y', currentY + '%');
+    if (gradient) {
+        gradient.style.setProperty('--x', currentX + '%');
+        gradient.style.setProperty('--y', currentY + '%');
+    }
     
     // Continue animation
     requestAnimationFrame(updateGradient);
 }
 
 document.addEventListener('mousemove', (e) => {
+    // Calculate X position normally
     mouseX = (e.clientX / window.innerWidth) * 100;
-    mouseY = (e.clientY / window.innerHeight) * 100;
+    
+    // For Y position, we need to account for the gradient being 200vh tall
+    // but positioned from viewport top. So we scale the viewport position
+    // to the gradient's coordinate system.
+    mouseY = (e.clientY / window.innerHeight) * 50; // Scale to first 50% of 200vh gradient
 });
 
 // Start the animation loop
@@ -158,14 +165,18 @@ updateTime(); // Initial call
 document.addEventListener('DOMContentLoaded', function() {
     const folderItems = document.querySelectorAll('.folder-item');
     const folderFullscreen = document.getElementById('folder-fullscreen');
-// Removed closeFolder since we're using back button instead
     const folderYearTitle = document.querySelector('.folder-year-title');
     const navLinks = document.querySelectorAll('.nav-links a, .social-links a'); // All nav links
+    
+    let openedFolder = null; // Track which folder is currently open
 
     folderItems.forEach(folder => {
         folder.addEventListener('click', function() {
             const year = this.getAttribute('data-year');
             folderYearTitle.textContent = year + ' Work';
+            
+            // Store reference to the opened folder
+            openedFolder = this;
             
             // Get folder position and size
             const rect = this.getBoundingClientRect();
@@ -202,13 +213,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check if folder is currently open
         if (folderFullscreen.style.visibility !== 'visible') return;
         
-        // Find which folder was clicked (the one that's currently visible)
-        const activeFolder = Array.from(folderItems).find(folder => 
-            getComputedStyle(folder).opacity === '1' || !folder.style.opacity
-        );
-        
-        if (activeFolder) {
-            const rect = activeFolder.getBoundingClientRect();
+        // Use the tracked opened folder instead of trying to find it
+        if (openedFolder) {
+            const rect = openedFolder.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
@@ -223,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 folderFullscreen.style.transform = 'scale(0.3)';
                 folderFullscreen.style.transformOrigin = 'center center';
                 folderFullscreen.style.transition = 'all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                openedFolder = null; // Clear the reference
             }, 600);
         } else {
             // Fallback if we can't find the folder
@@ -232,12 +240,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             setTimeout(() => {
                 folderFullscreen.style.visibility = 'hidden';
+                openedFolder = null; // Clear the reference
             }, 600);
         }
         
         document.body.style.overflow = 'auto';
     }
-
 
     // Close folder when clicking any nav link
     navLinks.forEach(link => {

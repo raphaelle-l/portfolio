@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata:wght@400&family=Kalam:wght@300;400;700&family=Barlow:wght@200;300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +7,10 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Alata', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
     color: #ffffff;
-    background: #0a0a0a;
+    background: #000000;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -18,31 +20,31 @@ body {
     margin: 0 auto;
     padding: 0 40px;
 }
-/* Background gradient that follows mouse - only for hero section */
+/* Background gradient that follows mouse - extended to cover work section */
 .bg-gradient {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Only cover viewport height */
+    height: 200vh; /* Extended to cover hero + work sections */
     pointer-events: none;
     z-index: -1;
-    background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), 
-        rgba(108, 92, 231, 0.15) 0%, 
-        rgba(121, 143, 253, 0.1) 25%, 
-        rgba(0, 184, 148, 0.05) 50%, 
+    background: radial-gradient(800px circle at var(--x, 50%) var(--y, 50%), 
+        rgba(78, 68, 212, 0.247) 0%, 
+        rgba(121, 143, 253, 0.219) 20%, 
+        rgba(0, 184, 148, 0.05) 55%, 
         transparent 100%);
 }
 
-/* Main content background for sections after hero */
+/* Main content background for sections after work */
 body::after {
     content: '';
     position: fixed;
-    top: 100vh;
+    top: 200vh; /* Start after hero + work sections */
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0a0a0a;
+    background: #000000;
     z-index: -2;
 }
 
@@ -53,7 +55,7 @@ nav {
     top: 0;
     z-index: 1000;
     padding: 30px 0;
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -115,6 +117,7 @@ nav .container {
     opacity: 1;
 }
 
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -125,6 +128,28 @@ nav .container {
 
 .hero-content {
     width: 100%;
+    position: relative;
+    z-index: 2; /* Higher z-index to go over the gif */
+}
+
+/* Animated Character */
+.hero-character {
+    position: absolute;
+    bottom: -280px; /* Lower position to span into about section */
+    right: 0;       /* No cropping needed */
+    z-index: 5;     /* Higher z-index to appear above section backgrounds */
+    pointer-events: none;
+}
+
+.character-gif {
+    width: 550px;
+    height: auto;
+    opacity: 1;
+    /* Performance optimizations */
+    transform: translateZ(0);
+    will-change: auto;
+    backface-visibility: hidden;
+    image-rendering: optimizeSpeed;
 }
 
 .hero-header {
@@ -216,9 +241,23 @@ nav .container {
 .section {
     padding: 120px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: #0a0a0a; /* Ensure solid background for content sections */
     position: relative;
     z-index: 1;
+}
+
+/* About section keeps solid background */
+#about {
+    background: #000000;
+}
+
+/* Work section gets transparent background to show gradient */
+#work {
+    background: transparent;
+}
+
+/* Contact section and after get solid background */
+#contact {
+    background: #000000;
 }
 
 .about-intro {
@@ -227,9 +266,27 @@ nav .container {
 }
 
 .about-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.work-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.contact-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
     margin-bottom: 2rem;
     color: #ffffff;
 }
@@ -387,7 +444,7 @@ nav .container {
 .contact {
     text-align: center;
     padding: 120px 0 80px;
-    background: #0a0a0a; /* Ensure solid background */
+    background: #000000; /* Ensure solid background */
     position: relative;
     z-index: 1;
 }
@@ -549,7 +606,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -603,8 +660,8 @@ html {
 }
 
 .folder-cover {
-    background: #0a0a0a;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #000000; /* Solid background to hide gradient */
+    backdrop-filter: blur(10px); /* Add glass effect */
     border-radius: 12px;
     padding: 3rem;
     height: 350px;
@@ -614,16 +671,16 @@ html {
 }
 
 .folder-item:hover .folder-cover {
-    border-color: rgba(255, 255, 255, 0.25);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    background: #000000; /* Keep solid on hover */
 }
 
-.folder-year {
+.folder-tab {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4rem;
+    font-size: 1.5rem;
     font-weight: 200;
     color: rgba(255, 255, 255, 0.8);
     z-index: 2;
@@ -631,7 +688,7 @@ html {
     transition: all 0.3s ease;
 }
 
-.folder-item:hover .folder-year {
+.folder-item:hover .folder-tab {
     color: rgba(255, 255, 255, 0.9);
     transform: translate(-50%, -50%) scale(1.05);
 }
@@ -679,7 +736,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0a0a0a;
+    background: #000000;
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
@@ -751,7 +808,7 @@ html {
 }
 
 .project-card {
-    background: #0a0a0a;
+    background: #000000;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
     padding: 2rem;
