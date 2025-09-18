@@ -303,15 +303,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sample project data organized by year and category
     const projectsData = {
         2025: [
-            { title: "Interactive Digital Art Installation", category: "art", description: "An immersive digital experience combining motion sensors and generative art to create responsive visual narratives." },
-            { title: "3D Printed Modular Furniture", category: "physical", description: "Sustainable furniture system using recycled plastic filament and parametric design principles." },
-            { title: "Smart Garden Controller", category: "digital", description: "IoT device with custom PCB design for automated plant care with mobile app integration." }
+            { title: "project 1", category: "art", description: "An immersive digital experience combining motion sensors and generative art to create responsive visual narratives." },
+            { title: "project 2", category: "physical", description: "Sustainable furniture system using recycled plastic filament and parametric design principles." },
+            { title: "project 3", category: "digital", description: "IoT device with custom PCB design for automated plant care with mobile app integration." }
         ],
         2024: [
-            { title: "Interactive AR Paintings", category: "art", description: "Traditional paintings enhanced with augmented reality layers revealing hidden stories and animations." },
-            { title: "Kinetic Light Sculpture", category: "physical", description: "Motion-activated sculpture combining woodworking, electronics, and programming for dynamic light patterns." },
-            { title: "Custom PCB Audio Mixer", category: "digital", description: "Hand-soldered analog audio mixer with custom circuit board design and 3D printed enclosure." },
-            { title: "Digital Portrait Series", category: "art", description: "Collection of digital illustrations exploring identity and technology through portraiture." }
+            { title: "Cardstock Fish Sculpture", category: "physical", description: "A small fish statue made out of laser-cut cardstock." },
+            { title: "Robot Lamp", category: "physical", description: "This robot lamp, standing at 2.5 feet tall, was entierly designed in Onshape and 3D printed using PLA. It was then assembled and painted. Most assembly joints are pressure fits to minimize the use of glue. The joints are moveable, making the robot posable. Its wooden base is magnetized, to ensure the feet stay locked into position when left standing." },
+            { title: "Concrete Wall Sconce", category: "physical", description: "This wall sconce was designed using a combination of Blender and Onshape. I 3D printed a mold out of PLA, in which I then poured fine concrete into. Once this slab was demolded, I made a wooden frame to fit behind the concrete. This wooden frame is where the led rope lights are attached, giving it a backlit glow. These leds make the colors and patterns of the sconce completely customizable." },
+            { title: "Acrylic Layered Lamp", category: "physical", description: "This table lamp was entirely designed in Onshape. It consists of layers of red acrylic held together by wooden dowels. In these layers of acrylic is a cavity, where a 3D printed ABS sphere lays. Inside of the sphere is where the light stands. The lamp seperates in half to facilitate battery changes and upkeep." },
+            { title: "Digital Art", category: "art", description: "A collection of digital art, including portaits and full body character creation." },
+            { title: "Interactive AR Painting Experience", category: "digital", description: "This project involves the use of augmented reality. Users scan a QR code that opens a camera on their phone. From there, they point their phones at my paintings, and a hand-drawn animation automatiaclly maps onto the illustration, making it seem as if the paintings have 'come to life'." },
+            { title: "Digital Comics", category: "art", description: "A collection of digital comics, including political cartoons, as well as single page stories." }
         ],
         2023: [
             { title: "Ceramic & Electronics Hybrid", category: "physical", description: "Exploring the intersection of traditional ceramics with embedded LED technology." },
@@ -323,6 +326,55 @@ document.addEventListener('DOMContentLoaded', function() {
             { title: "Laser Cut Wooden Sculptures", category: "physical", description: "Geometric wooden sculptures created through parametric design and precision laser cutting." }
         ]
     };
+
+    // Function to get preview items for each year based on actual projects
+    function getPreviewItems(year) {
+        const projects = projectsData[year] || [];
+        return projects.slice(0, 4).map(project => project.title.split(' ').slice(0, 2).join(' ')); // First 2 words of each title
+    }
+
+    // Update folder previews dynamically
+    function updateFolderPreviews() {
+        folderItems.forEach(folder => {
+            const year = folder.getAttribute('data-year');
+            const previewContainer = folder.querySelector('.folder-preview');
+            const previewItems = getPreviewItems(year);
+            
+            // Clear existing preview items
+            previewContainer.innerHTML = '';
+            
+            // Add new preview items based on actual projects
+            previewItems.forEach(itemTitle => {
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+                previewItem.textContent = itemTitle;
+                previewContainer.appendChild(previewItem);
+            });
+        });
+    }
+
+    // Function to populate folder with actual projects
+    function populateFolderProjects(year) {
+        const projectsContainer = document.querySelector('.projects-inside-folder');
+        const projects = projectsData[year] || [];
+        
+        // Clear existing projects
+        projectsContainer.innerHTML = '';
+        
+        // Add actual projects
+        projects.forEach(project => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+            
+            projectCard.innerHTML = `
+                <div class="project-image-placeholder">PROJECT IMAGE</div>
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+            `;
+            
+            projectsContainer.appendChild(projectCard);
+        });
+    }
 
     // Category filter functionality
     categoryFilter.addEventListener('change', function() {
@@ -392,11 +444,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return categoryNames[category] || category;
     }
 
+    // Initialize folder previews
+    updateFolderPreviews();
+
     // Original folder click functionality
     folderItems.forEach(folder => {
         folder.addEventListener('click', function() {
             const year = this.getAttribute('data-year');
             folderYearTitle.textContent = year + ' Work';
+            
+            // Populate with actual projects for this year
+            populateFolderProjects(year);
             
             // Store reference to the opened folder
             openedFolder = this;
