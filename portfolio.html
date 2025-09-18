@@ -40,7 +40,7 @@
             </div>
 
             <div class="hero-main">
-                <h1 class="hero-title" id="hero-title">Hello, my name is Raphaelle.</h1>
+                <h1 class="hero-title" id="hero-title">Hey! My name is Raphaelle.</h1>
             </div>
 
             <div class="hero-info">
@@ -51,7 +51,7 @@
                     <span>Exploring</span> <span class="arrow">→</span> <span>Digital Art, Physical Fabrication & Interactive Design</span>
                 </div>
                 <div class="hero-info-item">
-                    <span>PS! </span><span>Make sure to click around!</span>
+                    <span>PS! </span><span>Click around for fun stickers!</span>
                 </div>
             </div>
         </div>
@@ -124,10 +124,21 @@
     <div class="container">
         <div class="work-intro">
             <h2 class="work-title">My Work</h2>
-            <p class="work-subtitle">Organized by year — click on a folder to explore projects</p>
+            <p class="work-subtitle">All my projects are organized chronologically. Click on each year to see more. Or, filter my projects with the drop down menu below!</p>
+            
+            <!-- Filter Dropdown -->
+            <div class="work-filter">
+                <select id="categoryFilter" class="category-dropdown">
+                    <option value="all">All Projects</option>
+                    <option value="art">Art</option>
+                    <option value="physical">Physical Fabrication</option>
+                    <option value="digital">Digital Fabrication</option>
+                </select>
+            </div>
         </div>
         
-        <div class="folders-grid">
+        <!-- Folder View (default) -->
+        <div class="folders-grid" id="folders-view">
             <div class="folder-item" data-year="2025">
                 <div class="folder-cover">
                     <div class="folder-tab">2025</div>
@@ -172,6 +183,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Category Filter View (hidden by default) -->
+        <div class="category-projects" id="category-view" style="display: none;">
+            <!-- Projects will be populated here by JavaScript -->
         </div>
     </div>
     
@@ -232,5 +248,9 @@
     </footer>
 
     <script src="pagescript2.js"></script>
+
+    <!-- Sticker Container -->
+<div id="sticker-container"></div>
+</body>
 </body>
 </html>

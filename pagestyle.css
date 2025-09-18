@@ -617,6 +617,7 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
 /* Work Section - Folder Style */
 .work-intro {
     text-align: center;
@@ -636,8 +637,54 @@ html {
     font-weight: 300;
     color: rgba(255, 255, 255, 0.7);
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
     line-height: 1.6;
+}
+
+/* Filter Dropdown Styles */
+.work-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.category-dropdown {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Alata', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.3px;
+    min-width: 200px;
+    text-align: center;
+}
+
+.category-dropdown:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 1;
+}
+
+.category-dropdown:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.category-dropdown option {
+    background: #000000;
+    color: #ffffff;
+    padding: 12px 16px;
+    font-family: 'Alata', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
 }
 
 .folders-grid {
@@ -645,7 +692,7 @@ html {
     flex-direction: column;
     align-items: center;
     gap: 4rem;
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 
 .folder-item {
@@ -728,7 +775,6 @@ html {
     border-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Fullscreen folder view with smooth zoom */
 /* Fullscreen folder view with seamless zoom */
 .folder-fullscreen {
     position: fixed;
@@ -769,6 +815,7 @@ html {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
 }
+
 .folder-year-title {
     font-size: 2.5rem;
     font-weight: 300;
@@ -855,6 +902,132 @@ html {
     font-size: 0.95rem;
 }
 
+/* Category Projects View */
+.category-projects {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.year-group {
+    margin-bottom: 4rem;
+}
+
+.year-header {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.year-header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.category-project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.category-project-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    min-height: 320px;
+}
+
+.category-project-card:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.category-project-image {
+    width: 100%;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.category-project-card:hover .category-project-image {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.category-project-card h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.category-project-card .project-category {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.category-project-card p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Sticker System */
+#sticker-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.sticker {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5) rotate(-10deg);
+    transform-origin: center center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
+    z-index: 10000;
+}
+
+.sticker.show {
+    opacity: 1;
+}
+
+.sticker.fade-out {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .folders-grid {
@@ -874,5 +1047,10 @@ html {
     .preview-item {
         min-height: 60px;
         font-size: 0.8rem;
+    }
+    
+    .sticker {
+        width: 400px; /* Smaller on mobile but still big */
+        height: 400px;
     }
 }
